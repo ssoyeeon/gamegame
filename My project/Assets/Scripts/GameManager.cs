@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int dayCount = 0;
     public float secondTimer = 0.0f;                //리얼타임 변수 5초가 되었을때 게임 내 10분으로 변환하는데에 사용할 예정
     public bool activate = true;                    //행동 가능한지 상태를 나타내는 bool 값
+    public bool isGrabbed = false;                  //아이템을 들고 있는지 체크하는 변수
+    public int playerHP = 0;
 
     void Awake()
     {
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
 
             minute = 00;
         }
-        else if(time == 24)                             //필요할지는 모르겠지만 일차 변환
+        else if(time == 24)                             //필요할지는 모르겠지만 일자 변환
         {
             dayCount += 1;
             Debug.Log("하루가 지났습니다");
@@ -68,15 +71,12 @@ public class GameManager : MonoBehaviour
         else if(time == 6 && minute == 0)
         {
             activate = true;
+            playerHP = 100;
             
         }
 
-        
+
+    }
+
     
-        
-    
-
-
-
-}
 }
