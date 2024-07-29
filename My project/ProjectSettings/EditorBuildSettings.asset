@@ -8,4 +8,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GameSave.unity
+    guid: aa90d6ebd7d1b7b4eb54dd8814964e94
+  - enabled: 1
+    path: Assets/Scenes/ReStart.unity
+    guid: 038c99eb5c4eac44086ec2d00561836f
+  - enabled: 1
+    path: Assets/Scenes/Room 1.unity
+    guid: dd231b58c56b57b4791629583e2cfe29
+  - enabled: 1
+    path: Assets/Scenes/Room 2.unity
+    guid: 084226016bca1ca4986dcd9c9e13b427
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: f52e41f3899f41c4abb76acd564d8453
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 7062ecb119a7ebf49852993c03fa0942
   m_configObjects: {}
