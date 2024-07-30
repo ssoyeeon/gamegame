@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
 {
     public Field field;
 
+    //좌클릭을 했을 때 불러온다.
     public void Hoe()                   //호미
     {
         if(field.groundState == Field.GroundState.None && field.usedHoe == false)
