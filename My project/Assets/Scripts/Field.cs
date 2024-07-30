@@ -10,8 +10,6 @@ public class Field : MonoBehaviour
         Field,
         Wet,
         Planted
-
-
     }
     public bool usedHoe = false;                        //호미를 사용했는지 체크하는 변수
     public bool usedWateringPot = false;                //물뿌리개를 사용했는지 체크하는 변수
