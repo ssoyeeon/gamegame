@@ -1,57 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtil;
 
 public class Field : MonoBehaviour
 {
-    public enum GroundState            //현재 땅의 상태
-    {
-        None,
-        Field,
-        Wet,
-        Planted
-    }
-    public bool usedHoe = false;                        //호미를 사용했는지 체크하는 변수
-    public bool usedWateringPot = false;                //물뿌리개를 사용했는지 체크하는 변수
-    public bool isPlanted = false;                      //씨앗을 심었는지 체크하는 변수
-    public bool isReaped = false;                         //수확했는지 체크하는 변수                      
+    public SpriteRenderer spriteRenderer;                   // 이 오브젝트의 스프라이트
+    public GroundState groundState = GroundState.Empty;     // 땅의 상태
 
-    public GroundState groundState;
+    public CropData cropData;                               // 작물의 데이터
 
-    public void Update()
+    public float moistureLevel;             // 습도
+    public int growLevel;                   // 성장 단계
+
+    public void Start()
     {
-        switch (groundState)    //땅의 상태를 변경해주는 스위치 문
+        if(spriteRenderer == null)
         {
-            case GroundState.None:
-                if(usedHoe == true)
-                {
-                    groundState = GroundState.Field;
-                }
-                break;
+            if (!TryGetComponent <SpriteRenderer>(out spriteRenderer))
+            {
+                spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            }
+        }
+    }
+    public void PlantSeed(CropData crop)
+    {
+        cropData = crop;
+        spriteRenderer.sprite = cropData.cropSprite;
+    }
 
-            case GroundState.Field:
-                if (usedWateringPot == true)
-                {
-                    groundState = GroundState.Wet;
-                }
-                 break;
-
-            case GroundState.Wet:
-                if(isPlanted == true)
-                {
-                    groundState = GroundState.Planted;
-                }    
-                break;
-
-            case GroundState.Planted:
-                if(isReaped == true)
-                {
-                    groundState = GroundState.None;
-                }
-                break;
-
+    public void GrowPlant()
+    {
+        if(groundState != GroundState.Plowed)
+        {
+            return;
         }
 
-    }
+        growLevel++;
 
+        if(growLevel >= cropData.cropMidGrowthDay)
+        {
+            if (growLevel >= cropData.cropGrowthPeriod)
+            {
+                spriteRenderer.sprite = cropData.cropMaxGrowthSprite;
+
+                growLevel = cropData.cropGrowthPeriod;
+            }
+            else
+            {
+                spriteRenderer.sprite = cropData.cropMidGrowthSprite;
+            }
+        }
+    }
 }

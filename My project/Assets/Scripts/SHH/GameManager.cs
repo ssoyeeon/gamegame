@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameUtil;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class GameManager : MonoBehaviour
     public int playerHP = 0;
 
     public GameTime gameTime = new GameTime(0, 2, true);
-    public Enums.GameSpeed gameSpeed = Enums.GameSpeed.Default;
+    public GameSpeed gameSpeed = GameSpeed.Default;
     public Timer timeScaleConvertTimer = new Timer(5f);
+
+    public List<HotKeyData> items = new List<HotKeyData>();
+    public List<Field> fields = new List<Field>();
+    public ItemBase selectedItem;
     void Awake()
     {
         if (instance == null)
@@ -38,7 +43,7 @@ public class GameManager : MonoBehaviour
     {
         float deltaTime = Time.deltaTime;
 
-        if(gameSpeed != Enums.GameSpeed.Pause)
+        if(gameSpeed != GameSpeed.Pause)
         {
             if(timeScaleConvertTimer != null)
             {
@@ -50,7 +55,13 @@ public class GameManager : MonoBehaviour
 
                     if (isDayChange)
                     {
-                        // ³¯Â¥°¡ ¹Ù²ñ
+                        if(fields != null)
+                        {
+                            foreach (var field in fields)
+                            {
+                                field.GrowPlant();
+                            }
+                        }
                     }
                     else
                     {
@@ -60,9 +71,61 @@ public class GameManager : MonoBehaviour
                     PrintTime();
                 }
             }
+
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                SelectItemByIndex(0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                SelectItemByIndex(1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SelectItemByIndex(2);
+            }
         }
     }
     
+    public void SelectItemByIndex(int index)
+    {
+        for(int i = 0; i < items.Count; i ++)
+        {
+            if (items[i].indexNum == index)
+            {
+                if(selectedItem != null)
+                {
+                    selectedItem.DeSelectItem();
+                }
+                selectedItem = items[i].item;
+                selectedItem.SelectItem();
+                return;
+            }
+        }
+    }
+    public void SelectItemByItemBase(ItemBase itemBase)
+    {
+        if(!HasThisItem(itemBase))
+        {
+            return;
+        }
+
+        selectedItem = itemBase;
+    }
+
+    private bool HasThisItem(ItemBase itemBase)
+    {
+        foreach(var item in items)
+        {
+            if (item.item == itemBase)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void PrintTime()
     {

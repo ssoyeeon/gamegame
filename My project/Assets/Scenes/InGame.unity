@@ -201,14 +201,11 @@ Transform:
   m_GameObject: {fileID: 23259028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.144, y: 2.6870003, z: 0}
+  m_LocalPosition: {x: -7.52, y: -1.56, z: 0}
   m_LocalScale: {x: 2.0289216, y: 1.1050771, z: 0.11050771}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1240407344}
-  - {fileID: 73744166}
-  - {fileID: 1608272204}
-  m_Father: {fileID: 1723642908}
+  m_Children: []
+  m_Father: {fileID: 300903235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &73744165
 GameObject:
@@ -236,11 +233,11 @@ Transform:
   m_GameObject: {fileID: 73744165}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.239593, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -7.52, y: 2.02, z: 0}
+  m_LocalScale: {x: 2.0289216, y: 1.1050771, z: 0.11050771}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 23259030}
+  m_Father: {fileID: 300903235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &73744167
 SpriteRenderer:
@@ -1124,6 +1121,41 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 966794592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &300903234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 300903235}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &300903235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300903234}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.376, y: 4.247, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1240407344}
+  - {fileID: 73744166}
+  - {fileID: 1608272204}
+  - {fileID: 23259030}
+  m_Father: {fileID: 1723642908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &331843252
 GameObject:
@@ -2054,8 +2086,9 @@ GameObject:
   m_Component:
   - component: {fileID: 953845376}
   - component: {fileID: 953845375}
+  - component: {fileID: 953845377}
   m_Layer: 0
-  m_Name: "\uC544\uC774\uD15C_4"
+  m_Name: WateringPot_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2128,6 +2161,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 963385825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953845377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953845373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f1409c4f5323c4d970729bad1fac00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexNum: 1
+  itemType: 1
+  spriteRenderer: {fileID: 0}
+  toolType: 2
 --- !u!1 &963385824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,12 +2206,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1986660148}
+  - {fileID: 953845376}
   - {fileID: 107310000}
   - {fileID: 1784738293}
   - {fileID: 1284842721}
   - {fileID: 2029202120}
-  - {fileID: 953845376}
-  - {fileID: 1986660148}
   - {fileID: 2079124799}
   - {fileID: 1349988413}
   - {fileID: 2119875960}
@@ -2717,11 +2766,11 @@ Transform:
   m_GameObject: {fileID: 1240407343}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.6439238, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.9600005, y: -1.56, z: 0}
+  m_LocalScale: {x: 2.0289216, y: 1.1050771, z: 0.11050771}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 23259030}
+  m_Father: {fileID: 300903235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1240407345
 SpriteRenderer:
@@ -3826,11 +3875,11 @@ Transform:
   m_GameObject: {fileID: 1608272203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.6439238, y: 3.239593, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.9600005, y: 2.02, z: 0}
+  m_LocalScale: {x: 2.0289216, y: 1.1050771, z: 0.11050771}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 23259030}
+  m_Father: {fileID: 300903235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1608272205
 SpriteRenderer:
@@ -3995,6 +4044,9 @@ MonoBehaviour:
   gameSpeed: 1
   timeScaleConvertTimer:
     remainingTime: 5
+  items: []
+  fields: []
+  selectedItem: {fileID: 0}
 --- !u!4 &1672315124
 Transform:
   m_ObjectHideFlags: 0
@@ -4358,8 +4410,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 966794592}
-  - {fileID: 23259030}
   - {fileID: 963385825}
+  - {fileID: 300903235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1755408255
@@ -5113,8 +5165,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1986660148}
   - component: {fileID: 1986660147}
+  - component: {fileID: 1986660149}
   m_Layer: 0
-  m_Name: "\uC544\uC774\uD15C_5"
+  m_Name: Hoe_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,6 +5240,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 963385825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 27.377}
+--- !u!114 &1986660149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986660145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f1409c4f5323c4d970729bad1fac00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexNum: 0
+  itemType: 1
+  spriteRenderer: {fileID: 0}
+  toolType: 1
 --- !u!1 &2029202117
 GameObject:
   m_ObjectHideFlags: 0

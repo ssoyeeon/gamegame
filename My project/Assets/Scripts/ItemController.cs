@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public Field field;
+/*    public Field field;
 
     //좌클릭을 했을 때 불러온다.
     public void Hoe()                   //호미
@@ -38,7 +38,7 @@ public class ItemController : MonoBehaviour
             field.isReaped = true;
         }
     }
-
+*/
     // Update is called once per frame
     void Update()
     {

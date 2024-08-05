@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using GameUtil;
 
 [System.Serializable]
 public class Timer
@@ -20,20 +21,20 @@ public class Timer
         this.isRunning = true;
     }
 
-    public void Update(float deltaTime, Enums.GameSpeed speed)     // Update 함수에서 DeltaTime을 받아온다.
+    public void Update(float deltaTime, GameSpeed speed)     // Update 함수에서 DeltaTime을 받아온다.
     {
         if (isRunning)                       // 동작 중 일때
         {
 
-            if (speed == Enums.GameSpeed.Default)
+            if (speed == GameSpeed.Default)
             {
                 remainingTime -= deltaTime;
             }
-            else if (speed == Enums.GameSpeed.Fast)
+            else if (speed == GameSpeed.Fast)
             {
                 remainingTime -= deltaTime * 2;
             }
-            else if (speed == Enums.GameSpeed.Slow)
+            else if (speed == GameSpeed.Slow)
             {
                 remainingTime -= deltaTime / 2;
             }

@@ -6,7 +6,7 @@ public class itemselect : MonoBehaviour
 {
     ItemController controller;
     //좌클릭 우클릭하면 수확하기
-    void Update()
+    /*void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
@@ -44,5 +44,5 @@ public class itemselect : MonoBehaviour
             controller.Seed();
             Debug.Log("F key pressed");
         }
-    }
+    }*/
 }

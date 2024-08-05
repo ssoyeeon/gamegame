@@ -8,8 +8,8 @@ public class UIStorage : MonoBehaviour
     public List<TextMeshProUGUI> textMeshProUGUIList;
     public List<Button> buttonList;
 
-    private Dictionary<string, TextMeshProUGUI> textDictionary;
-    private Dictionary<string, Button> buttonDictionary;
+    private Dictionary<string, TextMeshProUGUI> textDictionary = new Dictionary<string, TextMeshProUGUI>();
+    private Dictionary<string, Button> buttonDictionary = new Dictionary<string, Button>();
 
     private void Start()
     {
