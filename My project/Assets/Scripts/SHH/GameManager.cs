@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;             //게임매니저 인스턴스화
 
+    public UIStorage UI;
+
     public bool activate = true;                    //행동 가능한지 상태를 나타내는 bool 값
     public bool isGrabbed = false;                  //아이템을 들고 있는지 체크하는 변수
     public int playerHP = 0;
@@ -28,7 +30,9 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        UI = FindObjectOfType<UIStorage>();
         timeScaleConvertTimer.Start();
+        PrintTime();
     }
     void Update()
     {
@@ -52,10 +56,28 @@ public class GameManager : MonoBehaviour
                     {
                         timeScaleConvertTimer.Start();
                     }
+
+                    PrintTime();
                 }
             }
         }
     }
     
+
+    private void PrintTime()
+    {
+        string timeText = $"{((gameTime.GetDay() == 0) ? "" : gameTime.GetDay().ToString() + "일차")} " +
+            $"{gameTime.GetHour()}시 {gameTime.GetMinute()}분 ({(gameTime.IsAM() ? "AM" : "PM")})";
+
+        if(UI == null)
+        {
+            return;
+        }
+
+        if(UI.GetText("Time") != null)
+        {
+            UI.GetText("Time").text = timeText;
+        }
+    }
 }
 
