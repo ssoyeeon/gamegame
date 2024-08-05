@@ -4036,13 +4036,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1180499387744e4291798e98037a8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 6
-  minute: 0
-  dayCount: 0
-  secondTimer: 0
   activate: 1
   isGrabbed: 0
   playerHP: 0
+  gameSpeed: 1
+  timeScaleConvertTimer:
+    remainingTime: 5
 --- !u!4 &1672315124
 Transform:
   m_ObjectHideFlags: 0
@@ -4637,8 +4636,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 6:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a06bb7f5c4b172f4a8594d34844fb6b9, type: 2}
+  m_sharedMaterial: {fileID: 8953512878754333325, guid: a06bb7f5c4b172f4a8594d34844fb6b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4662,10 +4661,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
+  m_fontSize: 51.7
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

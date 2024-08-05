@@ -9,6 +9,6 @@ public class Button : MonoBehaviour
 
     public void OnButton(int num)
     {
-        SceneManager.LoadScene(Scene[num]);
+        //SceneManager.LoadScene(Scene[num]);
     }
 }
