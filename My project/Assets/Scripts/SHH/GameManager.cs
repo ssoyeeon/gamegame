@@ -5,6 +5,7 @@ using UnityEngine;
 using GameUtil;
 using static UnityEditor.PlayerSettings;
 using static UnityEditor.Progress;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -90,13 +91,21 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (GameManager.instance.selectedItem != null)
+                if (selectedItem != null)
                 {
                     selectedItem.UseItem();
                 }
                 else
                 {
                     SelectItemByItemBase(GetItem());
+                }
+            }
+
+            if(Input.GetMouseButtonDown(1))
+            {
+                if(selectedItem  != null) 
+                {
+                    ChangeHotKeyData(GetItem());
                 }
             }
         }
@@ -134,6 +143,19 @@ public class GameManager : MonoBehaviour
         selectedItem.SelectItem();
     }
 
+    private HotKeyData GetHotKeyData(ItemBase itemBase)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].item == itemBase)
+            {
+                return items[i];
+            }
+        }
+
+        return null;
+    }
+
     private bool HasThisItem(ItemBase itemBase)
     {
         foreach(var item in items)
@@ -161,44 +183,68 @@ public class GameManager : MonoBehaviour
             UI.GetText("Time").text = timeText;
         }
     }
+
+    private void ChangeHotKeyData(ItemBase itemBase)
+    {
+        if (itemBase == null) return;
+        if (selectedItem == itemBase) return;
+        if (selectedItem.GetType() == typeof(ToolItem) || selectedItem.GetType() == typeof(ToolItem)) return;
+
+        HotKeyData selectedHotKeyData = GetHotKeyData(selectedItem);
+        HotKeyData hotKeyData = GetHotKeyData(itemBase);
+
+        int selectedIndex = selectedHotKeyData.indexNum;
+
+        selectedHotKeyData.indexNum = hotKeyData.indexNum;
+
+        hotKeyData.indexNum = selectedIndex;
+    }
     public Field GetField()
     {
         var pos = GetWorldPositon();
 
-        foreach (var field in GameManager.instance.fields)
-        {
-            var fieldPosition = new Vector3(field.transform.position.x, field.transform.position.y, 0);
+        float lastDistance = 1;
+        Field field = null;
 
-            if (Vector3.Distance(field.transform.position, pos) <= 0.9f)
+        foreach (var _field in GameManager.instance.fields)
+        {
+            var fieldPosition = new Vector3(_field.transform.position.x, _field.transform.position.y, 0);
+
+            if (lastDistance > Vector3.Distance(_field.transform.position, pos))
             {
-                return field;
+                lastDistance = Vector3.Distance(_field.transform.position, pos);
+                field = _field;
             }
         }
 
-        return null;
+        return field;
     }
 
     public ItemBase GetItem()
     {
         var pos = GetWorldPositon();
 
+        float lastDistance = 1;
+        ItemBase itemBase = null;
+
         foreach (var item in GameManager.instance.items)
         {
             var itemPosition = new Vector3(item.item.transform.position.x, item.item.transform.position.y, 0);
-            if (Vector3.Distance(itemPosition, pos) <= 0.9f)
+
+            if (lastDistance > Vector3.Distance(itemPosition, pos))
             {
-                return item.item;
+                lastDistance = Vector3.Distance(itemPosition, pos);
+                itemBase = item.item;
             }
         }
 
-        return null;
+        return itemBase;
     }
     public Vector3 GetWorldPositon()
     {
         Vector3 mousePoint = Input.mousePosition;                   // 마우스 위치를 가져옴
         Camera cam = Camera.main;                                   // 카메라는 메인 카메라
         mousePoint.z = cam.WorldToScreenPoint(gameObject.transform.position).z;
-        Debug.Log($"{cam.ScreenToWorldPoint(mousePoint).x}, {cam.ScreenToWorldPoint(mousePoint).y}, {cam.ScreenToWorldPoint(mousePoint).z}");
         return cam.ScreenToWorldPoint(mousePoint);
     }
 }

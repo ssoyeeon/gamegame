@@ -13,14 +13,19 @@ public class ToolItem : ItemBase
         {
             hotKeyIndex = 0;
         }
-        else if(toolType == ToolType.WateringPot)
+        else if (toolType == ToolType.Sickle)
         {
             hotKeyIndex = 1;
         }
-        else if(toolType == ToolType.Sickle)
+        else if(toolType == ToolType.Shovel)
         {
             hotKeyIndex = 2;
         }
+        else if (toolType == ToolType.WateringPot)
+        {
+            hotKeyIndex = 3;
+        }
+
         base.Start();
     }
 

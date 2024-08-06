@@ -22,7 +22,14 @@ public class Field : MonoBehaviour
                 spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
             }
         }
+        GameManager.instance.fields.Add(this);
     }
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, Vector3.one);
+    }
+
     public void PlantSeed(CropData crop)
     {
         cropData = crop;
