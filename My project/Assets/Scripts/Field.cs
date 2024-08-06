@@ -52,4 +52,24 @@ public class Field : MonoBehaviour
             }
         }
     }
+
+    public void Harvest()
+    {
+        GameManager.instance.money += cropData.cropSellPrice;
+
+        cropData = null;
+        spriteRenderer.sprite = null;
+        groundState = GroundState.Empty;
+        growLevel = 0;
+    }
+
+    public bool CanHarvest()
+    {
+        if(growLevel >= cropData.cropGrowthPeriod)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

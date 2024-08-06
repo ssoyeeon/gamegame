@@ -14,17 +14,6 @@ public class SeedItem : ItemBase
         base.Start();
     }
 
-    public void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            if(GameManager.instance.selectedItem == this)
-            {
-                UseItem();
-            }
-        }
-    }
-
     public override void UseItem()
     {
         base.UseItem();

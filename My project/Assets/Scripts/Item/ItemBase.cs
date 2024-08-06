@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameUtil;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 
 [System.Serializable]
 public class ItemBase : MonoBehaviour
@@ -43,26 +44,15 @@ public class ItemBase : MonoBehaviour
             return;
         }
 
-        var pos = GetWorldPositon();
-
-        foreach(var field in GameManager.instance.fields)
-        {
-            if(Vector3.Distance(field.transform.position, pos) <= 1.3f)
-            {
-                selectedField = field;
-                break;
-            }
-        }
+        selectedField = GameManager.instance.GetField();
 
         if(selectedField == null)
         {
-            foreach(var item in GameManager.instance.items)
+            ItemBase item = GameManager.instance.GetItem();
+
+            if (item != null)
             {
-                if(Vector3.Distance(item.item.transform.position , pos) <= 1.3f)
-                {
-                    GameManager.instance.SelectItemByItemBase(this);
-                    return;
-                }
+                GameManager.instance.SelectItemByItemBase(item);
             }
 
             return;
@@ -79,11 +69,5 @@ public class ItemBase : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    private Vector3 GetWorldPositon()
-    {
-        Vector3 mousePoint = Input.mousePosition;                   // 마우스 위치를 가져옴
-        Camera cam = Camera.main;                                   // 카메라는 메인 카메라
-        mousePoint.z = cam.WorldToScreenPoint(gameObject.transform.position).z;
-        return cam.ScreenToWorldPoint(mousePoint);
-    }
+
 }

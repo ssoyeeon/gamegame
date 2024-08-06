@@ -36,7 +36,8 @@ namespace GameUtil
         None,                   // ¾øÀ½
         Hoe,                    // È£¹Ì
         WateringPot,            // ¹°»Ñ¸®°³
-        Sickle                  // ³´(?)
+        Sickle,                 // ³´(?)
+        Shovel                  // »ð
     }
     public enum GroundState            //ÇöÀç ¶¥ÀÇ »óÅÂ
     {

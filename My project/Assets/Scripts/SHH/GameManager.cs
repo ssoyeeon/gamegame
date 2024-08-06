@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameUtil;
+using static UnityEditor.PlayerSettings;
+using static UnityEditor.Progress;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +12,7 @@ public class GameManager : MonoBehaviour
 
     public UIStorage UI;
 
-    public bool activate = true;                    //행동 가능한지 상태를 나타내는 bool 값
-    public bool isGrabbed = false;                  //아이템을 들고 있는지 체크하는 변수
+    public int money = 500;
     public int playerHP = 0;
 
     public GameTime gameTime = new GameTime(0, 2, true);
@@ -86,6 +87,18 @@ public class GameManager : MonoBehaviour
             {
                 SelectItemByIndex(2);
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (GameManager.instance.selectedItem != null)
+                {
+                    selectedItem.UseItem();
+                }
+                else
+                {
+                    SelectItemByItemBase(GetItem());
+                }
+            }
         }
     }
     
@@ -112,7 +125,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (selectedItem != null)
+        {
+            selectedItem.DeSelectItem();
+        }
         selectedItem = itemBase;
+
+        selectedItem.SelectItem();
     }
 
     private bool HasThisItem(ItemBase itemBase)
@@ -141,6 +160,46 @@ public class GameManager : MonoBehaviour
         {
             UI.GetText("Time").text = timeText;
         }
+    }
+    public Field GetField()
+    {
+        var pos = GetWorldPositon();
+
+        foreach (var field in GameManager.instance.fields)
+        {
+            var fieldPosition = new Vector3(field.transform.position.x, field.transform.position.y, 0);
+
+            if (Vector3.Distance(field.transform.position, pos) <= 0.9f)
+            {
+                return field;
+            }
+        }
+
+        return null;
+    }
+
+    public ItemBase GetItem()
+    {
+        var pos = GetWorldPositon();
+
+        foreach (var item in GameManager.instance.items)
+        {
+            var itemPosition = new Vector3(item.item.transform.position.x, item.item.transform.position.y, 0);
+            if (Vector3.Distance(itemPosition, pos) <= 0.9f)
+            {
+                return item.item;
+            }
+        }
+
+        return null;
+    }
+    public Vector3 GetWorldPositon()
+    {
+        Vector3 mousePoint = Input.mousePosition;                   // 마우스 위치를 가져옴
+        Camera cam = Camera.main;                                   // 카메라는 메인 카메라
+        mousePoint.z = cam.WorldToScreenPoint(gameObject.transform.position).z;
+        Debug.Log($"{cam.ScreenToWorldPoint(mousePoint).x}, {cam.ScreenToWorldPoint(mousePoint).y}, {cam.ScreenToWorldPoint(mousePoint).z}");
+        return cam.ScreenToWorldPoint(mousePoint);
     }
 }
 

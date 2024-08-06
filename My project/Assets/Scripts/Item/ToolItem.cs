@@ -28,6 +28,12 @@ public class ToolItem : ItemBase
     {
         base.UseItem();
 
+        if (selectedField == null)
+        {
+            return;
+        }
+        
+
         if(toolType == ToolType.None)
         {
             return;
@@ -41,7 +47,22 @@ public class ToolItem : ItemBase
             }
 
             selectedField.groundState = GroundState.Plowed;
+            return;
+        }
 
+        if(toolType == ToolType.Sickle)
+        {
+            if(selectedField.groundState == GroundState.Planted)
+            {
+                if (selectedField.CanHarvest())
+                {
+                    selectedField.Harvest();
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
     }
 }

@@ -1147,7 +1147,7 @@ Transform:
   m_GameObject: {fileID: 300903234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.376, y: 4.247, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2202,16 +2202,16 @@ Transform:
   m_GameObject: {fileID: 963385824}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.376, y: -4.247, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986660148}
   - {fileID: 953845376}
+  - {fileID: 2029202120}
   - {fileID: 107310000}
   - {fileID: 1784738293}
   - {fileID: 1284842721}
-  - {fileID: 2029202120}
   - {fileID: 2079124799}
   - {fileID: 1349988413}
   - {fileID: 2119875960}
@@ -2245,7 +2245,7 @@ Transform:
   m_GameObject: {fileID: 966794591}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9527074, y: 4.895076, z: -0.45224196}
+  m_LocalPosition: {x: -2.3287075, y: 0.6480756, z: -0.45224196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4405,7 +4405,7 @@ Transform:
   m_GameObject: {fileID: 1723642907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.376, y: -4.247, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5235,7 +5235,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.2366471, w: 0.9715957}
   m_LocalPosition: {x: -4.416, y: -0.035999775, z: 0}
-  m_LocalScale: {x: 0.428021, y: 0.428021, z: 0.42802098}
+  m_LocalScale: {x: 0.42802107, y: 0.42802107, z: 0.42802098}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 963385825}
@@ -5266,8 +5266,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2029202120}
   - component: {fileID: 2029202119}
+  - component: {fileID: 2029202121}
   m_Layer: 0
-  m_Name: "\uC544\uC774\uD15C_2"
+  m_Name: Sickle_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5340,6 +5341,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 963385825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029202121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029202117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f1409c4f5323c4d970729bad1fac00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indexNum: 2
+  itemType: 1
+  spriteRenderer: {fileID: 0}
+  toolType: 3
 --- !u!1 &2079124797
 GameObject:
   m_ObjectHideFlags: 0
